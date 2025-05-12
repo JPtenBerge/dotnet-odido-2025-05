@@ -1,0 +1,16 @@
+﻿<div class="game-info">
+    <div>Game ID: @GameId</div>
+    <div>Created: @CreatedAt.ToShortDateString() @CreatedAt.ToShortTimeString()</div>
+    <div>Player: @PlayerName</div>
+</div>
+
+@code {
+    [Parameter]
+    public int GameId { get; set; } = 0;
+
+    [Parameter]
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    [Parameter]
+    public string PlayerName { get; set; } = "Player";
+}

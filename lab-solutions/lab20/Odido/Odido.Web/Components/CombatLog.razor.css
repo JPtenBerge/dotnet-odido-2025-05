@@ -1,0 +1,21 @@
+﻿.combat-log {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.log-entries {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+    .log-entry:last-child {
+        border-bottom: none;
+    }

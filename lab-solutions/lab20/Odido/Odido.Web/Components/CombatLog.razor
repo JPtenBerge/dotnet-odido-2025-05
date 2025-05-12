@@ -1,0 +1,19 @@
+﻿<div class="combat-log">
+    <h4>Combat Log</h4>
+    <div class="log-entries">
+        @if (Logs is null || Logs.Count == 0)
+        {
+            <div class="log-entry">No combat logs available.</div>
+        } else {
+            @foreach (string log in Logs)
+            {
+                <div class="log-entry">@log</div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<string> Logs { get; set; } = [];
+}

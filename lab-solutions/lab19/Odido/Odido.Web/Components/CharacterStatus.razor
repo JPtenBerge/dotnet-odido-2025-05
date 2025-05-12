@@ -1,0 +1,11 @@
+﻿@using Odido.Web.Models
+
+<div class="character-status">
+    <h4>@Character.Type</h4>
+    <HealthBar Health="@Character.Health" MaxHealth="@Character.MaxHealth" Label="@($"{Character.Type} Health")" />
+</div>
+
+@code {
+    [Parameter]
+    public CharacterResponse Character { get; set; } = new CharacterResponse();
+}

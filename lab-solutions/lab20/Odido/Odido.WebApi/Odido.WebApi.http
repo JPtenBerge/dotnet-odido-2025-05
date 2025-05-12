@@ -1,0 +1,43 @@
+@Odido.WebApi_HostAddress = https://localhost:7287
+
+@playerName=Simona
+
+### Get active games for player
+
+GET {{Odido.WebApi_HostAddress}}/api/game/player/{{playerName}}
+
+
+### Get game by id
+
+@id=1
+GET {{Odido.WebApi_HostAddress}}/api/game/{{id}}
+
+
+### New Game
+
+POST {{Odido.WebApi_HostAddress}}/api/game
+Content-Type: application/json
+
+{
+  "PlayerName" : "{{playerName}}",
+  "Difficulty": 1
+}
+
+###Attack
+POST {{Odido.WebApi_HostAddress}}/api/game/{{id}}/play
+Content-Type: application/json
+
+{
+  "Action" : 0
+}
+
+###Heal
+POST {{Odido.WebApi_HostAddress}}/api/game/{{id}}/play
+Content-Type: application/json
+
+{
+  "Action" : 1
+}
+
+
+###

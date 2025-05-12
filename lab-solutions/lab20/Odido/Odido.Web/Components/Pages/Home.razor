@@ -1,0 +1,65 @@
+﻿@inject IGameService GameService
+@inject NavigationManager NavigationManager
+@page "/"
+@using Odido.Web.Interfaces
+@using Odido.Web.Components
+@using Odido.Web.Models
+
+<PageTitle>RPG Game - Home</PageTitle>
+
+<div class="hero-welcome">
+    <h1>Welcome, Hero!</h1>
+    <div class="player-input">
+        <h2>What is your name?</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter your name" @bind="UserName" />
+            <button class="btn btn-primary" @onclick="ListGames">Find Games</button>
+            <button class="btn btn-success" @onclick="NewGame">New Game</button>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(UserName))
+{
+    <div class="games-container">
+        @if (games is not null && games.Any())
+        {
+            <h3>Your Active Games</h3>
+            <div class="games-list">
+                @foreach (var game in games)
+                {
+                    <GameCard Game="@game"/>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="no-games">
+                <p>No active games found for @UserName.</p>
+                <button class="btn btn-success" @onclick="NewGame" disabled="@(string.IsNullOrWhiteSpace(UserName))">Start a New Adventure</button>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    public string UserName { get; set; } = "TestPlayer";
+    IEnumerable<GameResponse> games = [];
+
+    private async Task ListGames()
+    {
+        if (!string.IsNullOrWhiteSpace(UserName))
+        {
+            games = await GameService.GetActiveGamesByPlayerNameAsync(UserName);
+        }
+    }
+
+    private async Task NewGame()
+    {
+        if (!string.IsNullOrWhiteSpace(UserName))
+        {
+            var result = await GameService.CreateGameAsync(UserName);
+            NavigationManager.NavigateTo($"play/{result.Id}");
+        }
+    }
+}

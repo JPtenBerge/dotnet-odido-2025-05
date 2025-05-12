@@ -1,0 +1,6 @@
+@Odido.WebApi_HostAddress = http://localhost:5265
+
+GET {{Odido.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

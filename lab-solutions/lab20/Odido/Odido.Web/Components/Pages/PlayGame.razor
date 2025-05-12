@@ -1,0 +1,57 @@
+﻿@page "/play/{gameId:int}"
+@using Odido.Web.Interfaces
+@using Odido.Web.Models
+@inject IGameService GameService
+@inject NavigationManager NavigationManager
+
+<div class="play-game-container">
+    <h3>RPG Battle</h3>
+
+    @if (currentGame is not null)
+    {
+        <GameInfo GameId="@currentGame.Id" CreatedAt="@currentGame.CreationDate" PlayerName="@currentGame.PlayerName" />
+
+        <BattleArea Hero="@currentGame.Hero" Boss="@currentGame.Boss" />
+
+        <ActionButtons IsDisabled="currentGame.IsCompleted" OnAttack="Attack" OnHeal="Heal" OnBackToHome="BackToHome" />
+
+        @if (currentGame.IsCompleted)
+        {
+            <GameOver WinnerType="@currentGame.WinnerType" />
+        }
+
+        <CombatLog Logs="@currentGame.CombatLog" />
+    } else
+    {
+        <p>Loading game data...</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int GameId { get; set; } = 0;
+
+    public GameResponse? currentGame;
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentGame = await GameService.GetGameByIdAsync(GameId);
+    }
+
+    private async Task Attack()
+    {
+        GameActionResultResponse gameActionResult = await GameService.PlayTurnAsync(GameId, GameAction.Attack);
+        currentGame = gameActionResult.Game;
+    }
+
+    private async Task Heal()
+    {
+        GameActionResultResponse gameActionResult = await GameService.PlayTurnAsync(GameId, GameAction.Heal);
+        currentGame = gameActionResult.Game;
+    }
+
+    private void BackToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

@@ -1,0 +1,13 @@
+﻿@using Odido.Web.Models
+<div class="battle-area">
+    <CharacterStatus Character="@Hero" />
+    <CharacterStatus Character="@Boss" />
+</div>
+
+@code {
+    [Parameter]
+    public CharacterResponse Hero { get; set; } = new CharacterResponse();
+
+    [Parameter]
+    public CharacterResponse Boss { get; set; } = new CharacterResponse();
+}

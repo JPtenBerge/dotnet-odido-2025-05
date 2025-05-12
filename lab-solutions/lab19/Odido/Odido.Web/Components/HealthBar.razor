@@ -1,0 +1,20 @@
+﻿<div class="health-bar-container">
+    <div class="health-bar-label">@Label</div>
+    <div class="health-bar">
+        <div class="health-bar-fill" style="width: @HealthPercentage%"></div>
+    </div>
+    <div class="health-bar-text">@Health / @MaxHealth</div>
+</div>
+
+@code {
+    [Parameter]
+    public int Health { get; set; }
+
+    [Parameter]
+    public int MaxHealth { get; set; } = 100;
+
+    [Parameter]
+    public string Label { get; set; } = string.Empty;
+
+    private int HealthPercentage => Math.Clamp((int)Math.Round((double)Health / MaxHealth * 100), 0, 100);
+}

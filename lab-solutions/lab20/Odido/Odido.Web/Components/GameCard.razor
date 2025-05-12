@@ -1,0 +1,28 @@
+﻿@using Odido.Web.Models
+@if (Game is not null)
+{
+<div class="game-card">
+    <div class="game-header">
+            <h4>Game #@Game.Id</h4>
+            <span class="game-date">@Game.CreationDate.ToString("MMM dd, HH:mm")</span>
+    </div>
+
+    <div class="health-bars">
+        <div class="character-health">
+            <HealthBar Health="@Game.Hero.Health" MaxHealth="@Game.Hero.MaxHealth" Label="Hero Health"></HealthBar>
+        </div>
+
+        <div class="character-health">
+            <HealthBar Health="@Game.Boss.Health" MaxHealth="@Game.Boss.MaxHealth" Label="Boss Health"></HealthBar>
+        </div>
+    </div>
+
+    <div class="game-actions">
+         <a class="btn btn-primary" href="play/@Game.Id">Continue Battle</a>
+    </div>
+</div>
+}
+@code {
+    [Parameter, EditorRequired]
+    public GameResponse? Game { get; set; } 
+}

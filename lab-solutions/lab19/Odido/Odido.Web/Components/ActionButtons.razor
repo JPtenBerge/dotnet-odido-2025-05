@@ -1,0 +1,19 @@
+﻿<div class="action-buttons">
+    <button class="btn btn-danger" @onclick="OnAttack" disabled="@IsDisabled">Attack</button>
+    <button class="btn btn-success" @onclick="OnHeal" disabled="@IsDisabled">Heal</button>
+    <button class="btn btn-secondary" @onclick="OnBackToHome">Back to Games</button>
+</div>
+
+@code {
+    [Parameter]
+    public bool IsDisabled { get; set; } = false;
+
+    [Parameter]
+    public EventCallback OnAttack { get; set; }
+
+    [Parameter]
+    public EventCallback OnHeal { get; set; }
+
+    [Parameter]
+    public EventCallback OnBackToHome { get; set; }
+}

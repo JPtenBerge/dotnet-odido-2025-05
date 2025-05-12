@@ -1,0 +1,6 @@
+﻿.battle-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}

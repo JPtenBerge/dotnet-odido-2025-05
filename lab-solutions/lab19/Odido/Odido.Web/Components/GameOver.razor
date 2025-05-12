@@ -1,0 +1,15 @@
+﻿<div class="game-over @(WinnerType == "Hero" ? "victory" : "defeat")">
+    <h3>Game Over!</h3>
+    @if (WinnerType == "Hero")
+    {
+        <p>You defeated the boss and won the battle! 🏆</p>
+    } else
+    {
+        <p>The boss defeated you! Better luck next time. 💀</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string WinnerType { get; set; } = string.Empty;
+}

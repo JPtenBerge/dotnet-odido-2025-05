@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Odido.WebApi\\Odido.WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Odido.Web\\Odido.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

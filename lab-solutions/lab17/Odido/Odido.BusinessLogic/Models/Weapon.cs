@@ -1,0 +1,15 @@
+﻿using Odido.BusinessLogic.Interfaces;
+
+namespace Odido.BusinessLogic.Models;
+
+internal class Weapon : IDamageable
+{
+    public int Durability { get; private set; } = 100;
+
+    public int TakeDamage(int damage)
+    {
+        int actualDamage = Math.Min(damage, Durability);
+        Durability -= actualDamage;
+        return actualDamage;
+    }
+}
