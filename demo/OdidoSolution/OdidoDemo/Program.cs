@@ -33,6 +33,8 @@ namespace OdidoDemo
 
         public static void Main(string[] args) // the startup point of our application
         {
+            StringStuff();
+
             //DateTime
 
             //int hugeNumber = 887756;
@@ -64,7 +66,7 @@ namespace OdidoDemo
             int? optionalInteger = null;
             if (optionalInteger.HasValue)
             {
-                optionalInteger.Value
+                //optionalInteger.Value
             }
 
             optionalInteger = 343;
@@ -90,6 +92,70 @@ namespace OdidoDemo
             //char uni = 'q';
 
             //Console.WriteLine("Floating errors: " + uni);
+        }
+
+        public static void AboutVar()
+        {
+            int someNumber = 42;
+            string someText = "something";
+
+            var something = GiveMoreValue();
+
+            //var customers;
+
+            // low-level outside-of-.NET objects that don't have typical interfaces
+            // - COM objects
+            // - REFLECTION  <== necessary evil
+
+            //dynamic bla = null;
+            //bla.DoWhatever(14, 28, "hi", "whaaat");
+        }
+
+        public static int GiveMoreValue()
+        {
+            return 42;
+        }
+
+        public static void StringStuff()
+        {
+            var text = "my text here ❌👀✅🛫⚠️🍗⚡";
+            text += "whatever";
+
+
+            Console.WriteLine(text.EndsWith("here"));
+            Console.WriteLine(text.StartsWith("here"));
+
+            Console.WriteLine("text: " + text + " qq");
+            Console.WriteLine($"text: {text}"); // string interpolation
+            Console.WriteLine(@"c:\users\adminsitrator");
+            Console.WriteLine($@"c:\users\adminsitrator {text}");
+
+            //Console.WriteLine($"""
+            //    Hi there!
+
+            //    This is multiline {text}
+            //    """);
+
+            Console.WriteLine("Length: " + text.Length);
+            Console.WriteLine("Count: " + text.Count());
+
+            foreach (var character in text)
+            {
+                Console.WriteLine($"char: {character}");
+            }
+            Console.WriteLine($"char #12: {text[3]}");
+
+            var price = 123.456789;
+            Console.WriteLine(price.ToString("N2"));
+
+
+
+            //const int MaxRegions = 5;
+            //const string CompanyName = "TeleCo";
+
+            //MaxRegions = 278443;
+
+
         }
     }
 }

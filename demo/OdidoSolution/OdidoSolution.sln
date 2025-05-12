@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdidoDemo", "OdidoDemo\OdidoDemo.csproj", "{59E493B2-0B5A-434E-AAFB-34AAEA497C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateDemo", "DelegateDemo\DelegateDemo.csproj", "{313C162C-BBB5-4324-A68C-D39B8C97C029}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{59E493B2-0B5A-434E-AAFB-34AAEA497C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E493B2-0B5A-434E-AAFB-34AAEA497C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E493B2-0B5A-434E-AAFB-34AAEA497C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313C162C-BBB5-4324-A68C-D39B8C97C029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313C162C-BBB5-4324-A68C-D39B8C97C029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313C162C-BBB5-4324-A68C-D39B8C97C029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313C162C-BBB5-4324-A68C-D39B8C97C029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
