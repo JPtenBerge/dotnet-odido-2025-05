@@ -1,4 +1,6 @@
-﻿namespace OdidoDemo
+﻿using System.Text;
+
+namespace OdidoDemo
 {
     public enum HttpStatusCodes
     {
@@ -11,7 +13,6 @@
         public decimal latitude;
         decimal longitude;
         decimal accuracy;
-
     }
 
     public class RefLocation
@@ -32,9 +33,21 @@
 
         public static void Main(string[] args) // the startup point of our application
         {
-            (int thatNumber, string thatString) = GiveValue();
+            //DateTime
 
-            Console.WriteLine("give value method call: " + thatNumber);
+            //int hugeNumber = 887756;
+            //string hugeString = "123";
+            //byte smallNumber = (byte) hugeString;
+
+
+            //Console.WriteLine("small number: " + smallNumber);
+
+
+
+
+            //(int thatNumber, string thatString) = GiveValue();
+
+            //Console.WriteLine("give value method call: " + thatNumber);
 
 
             // [datatype] [name] = [value];
@@ -43,9 +56,18 @@
             //int myOtherNumber = myNumber; // copying its value
             //myOtherNumber = 999;
 
+            string? bla = string.Empty;
+            string? bla2 = ""; // reference type
+            string? bla4 = null;
 
-            //int? optionalInteger = null;
-            //optionalInteger = 343;
+
+            int? optionalInteger = null;
+            if (optionalInteger.HasValue)
+            {
+                optionalInteger.Value
+            }
+
+            optionalInteger = 343;
 
 
             //Console.WriteLine("my number: " + myNumber + "/" + myOtherNumber);
@@ -55,7 +77,7 @@
             //RefLocation myOtherLocation = myLocation; // copying the memory address
             //myOtherLocation.latitude = 99.9M;
             //Console.WriteLine("myloc: " + myLocation.latitude + "/" + myOtherLocation.latitude);
-            
+
 
             //HttpStatusCodes myStatusCode = HttpStatusCodes.Unauthenticated;
 
