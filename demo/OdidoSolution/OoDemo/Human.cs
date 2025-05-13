@@ -9,7 +9,13 @@ namespace OoDemo;
 class Human
 {
     private int _age; // stores the actual value "backing field"
-    public int MyProperty { get; set; }
+    public int MyProperty
+    {
+        set
+        {
+            
+        }
+    }
 
     private string _firstName = "JP";
     private string _surname = "tB";
