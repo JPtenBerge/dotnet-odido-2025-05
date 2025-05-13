@@ -17,9 +17,9 @@ class Phone
 
     // has-a relationship: composition
 
-    private Battery _battery;
-    private SimCard _sim;
-    private Screen _screen;
+    //private Battery _battery;
+    //private SimCard _sim;
+    //private Screen _screen;
 
 
 
@@ -38,11 +38,11 @@ class Phone
         Dimensions = dimensions;
     }
 
-    internal TurnOn()
+    internal void TurnOn()
     {
-        _battery.CheckLife();
-        _sim.ConnectToNetwork();
-        _screen.ShowLoading();
+        //_battery.CheckLife();
+        //_sim.ConnectToNetwork();
+        //_screen.ShowLoading();
     }
 }
 
