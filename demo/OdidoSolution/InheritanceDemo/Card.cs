@@ -12,8 +12,12 @@ namespace InheritanceDemo
 
         public virtual void Pay(decimal amount)
         {
+            Console.WriteLine($"Card credit before payment: {Credit}");
+
             // C#   banker's rounding
             Credit -= Convert.ToInt32(amount);
+
+            Console.WriteLine($"Card credit after payment: {Credit}");
         }
     }
 }

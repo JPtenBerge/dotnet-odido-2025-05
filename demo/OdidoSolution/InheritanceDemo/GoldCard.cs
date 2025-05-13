@@ -8,14 +8,17 @@ namespace InheritanceDemo
 {
     class GoldCard(int credit, decimal discount) : Card(credit)
     {
+        public decimal Discount { get; set; } = discount;
+
         public override void Pay(decimal amount)
         {
             var discountAmount = amount / 100M * discount;
             var amountWithDiscountApplied = amount - discountAmount;
 
-            Credit -= 123;
+            //Credit -= 123;
 
-            //base.Pay(amountWithDiscountApplied);
+            base.Pay(amountWithDiscountApplied);
+            Console.WriteLine($"-- oh, and btw, has {Discount}% discount");
         }
     }
 }
