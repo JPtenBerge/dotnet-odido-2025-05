@@ -15,6 +15,14 @@ class Phone
     public string Type { get; set; }
     public decimal Dimensions { get; set; } = 65M;
 
+    // has-a relationship: composition
+
+    private Battery _battery;
+    private SimCard _sim;
+    private Screen _screen;
+
+
+
     // generated if you don't include a constructor yourself
     //Phone() { }
 
@@ -28,5 +36,25 @@ class Phone
     internal Phone(string brand, string type, decimal dimensions) : this(brand, type)
     {
         Dimensions = dimensions;
+    }
+
+    internal TurnOn()
+    {
+        _battery.CheckLife();
+        _sim.ConnectToNetwork();
+        _screen.ShowLoading();
+    }
+}
+
+
+
+internal class PhoneBla(string brand)
+{
+    public string Brand { get; set; } = brand;
+
+
+    internal PhoneBla(string brand, string type) : this(brand)
+    {
+
     }
 }

@@ -20,7 +20,17 @@ internal class Program
         //myPhone2.Brand = "qqq";
 
         var myPhone3 = new Phone(type: "11", brand: "OnePlus", dimensions: 6.5M);
+        myPhone3.TurnOn();
+        //myPhone3.battery.GetRemainingLife();
+            
 
         Console.WriteLine($"brand: {myPhone3.Brand}");
+
+
+        //new PhoneBla().
+
     }
+
+
+
 }
