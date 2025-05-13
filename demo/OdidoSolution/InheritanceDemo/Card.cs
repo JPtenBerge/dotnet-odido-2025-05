@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace InheritanceDemo
 {
-    class Card(int credit)
+    abstract class Card(int credit)
     {
         public int Credit { get; protected set; } = credit;
 
-        public virtual void Pay(decimal amount)
+        public abstract void Pay(decimal amount);
+
+        public virtual void OtherMethodThatCanAlsoBeOverriden()
         {
-            Console.WriteLine($"Card credit before payment: {Credit}");
 
-            // C#   banker's rounding
-            Credit -= Convert.ToInt32(amount);
-
-            Console.WriteLine($"Card credit after payment: {Credit}");
         }
     }
 }

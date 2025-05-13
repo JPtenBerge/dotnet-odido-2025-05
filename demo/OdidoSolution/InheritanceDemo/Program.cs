@@ -13,8 +13,6 @@ namespace InheritanceDemo
             cards[1] = new GoldCard(500_000, 14.3M);
             cards[2] = new GoldCard(1_500_000, 28.9M);
 
-
-
             foreach (var card in cards)
             {
                 card.Pay(500M);
