@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace DelegateDemo
+﻿namespace DelegateDemo
 {
     internal class Program
     {
@@ -21,20 +19,33 @@ namespace DelegateDemo
         {
             //FilterProductsStartingWith("l");
 
-            Predicate<string> firstLetterFilterMethod = delegate (string product)
+            // inline method - lambda       "arrow function"
+
+            new List<int>().Where(n => n > 20);
+
+            // Predicate must return boolean
+            // Func<string,        bool>
+            //      ^-- paramater  ^-- return value
+            // Predicate<string> == Func<string, bool>
+            // Action<string>   
+
+            //Predicate<string> firstLetterFilterMethod = product => product.StartsWith("L");
+            FilterProducts(delegate(string p, int n)
             {
-                Console.WriteLine($"filter method - checking whether {product} begint with L");
-                return product.StartsWith("L");
-            };
-            FilterProducts(firstLetterFilterMethod);
+                return p.StartsWith("L");
+            });
+
+            FilterProducts((p, n) => p.StartsWith("L"));
         }
 
+        delegate bool MyPredicate(string product, int number);
+
         // this already exists in .NET - .Where()
-        static void FilterProducts(Predicate<string> filterMethod)
+        static void FilterProducts(MyPredicate filterMethod)
         {
             foreach (var product in products)
             {
-                if (filterMethod.Invoke(product))
+                if (filterMethod.Invoke(product, 42))
                 {
                     Console.WriteLine($"Product {product}");
                 }
