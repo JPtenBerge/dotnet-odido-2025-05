@@ -17,7 +17,7 @@ namespace InheritanceDemo
 
             //Credit -= 123;
 
-            base.Pay(amountWithDiscountApplied);
+            //base.Pay(amountWithDiscountApplied);
             Console.WriteLine($"-- oh, and btw, has {Discount}% discount");
         }
     }
