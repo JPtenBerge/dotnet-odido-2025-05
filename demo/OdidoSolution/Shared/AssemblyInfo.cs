@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("GenericDemo")]
+//[assembly: InternalsVisibleTo("GenericDemo")]
