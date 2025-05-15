@@ -32,6 +32,45 @@ Value types in .NET:
 
 C# has a language feature called "operator overloading" that allows for custom behavior with operators. `== null` can be overloaded, `is null` cannot. For this reason, `is null` is regularly preferred over `== null`.
 
+
+## Pillars of Object Orientation (OO)
+
+- abstraction
+- inheritance
+- encapsulation
+- polymorphism
+
+COBOL AS/400: procedural languages with scripts of 6000+ lines long
+
+web applications on enterprise level
+- loads of pages/screens
+- lots of CRUD screens
+- lots of logic is pretty much the same
+  - or looks very alike
+- lots of parts can be REUSED - 300+ screens
+
+
+Class vs instance/object:
+
+```cs
+class Bicycle { ... } // class
+
+new Bicycle(); // instance / object
+new Bicycle(); // instance / object
+new Bicycle(); // instance / object
+```
+
+## Access modifiers
+
+- `public`
+  - the entire world
+- `protected`
+  - class itself and derivatives (subclasses) - inheritance
+- `internal`
+  - only visible for that project
+- `private`
+  - only the class itself
+
 ## Inheritance
 
 - parent classes / child classes
@@ -48,7 +87,6 @@ where to inherit:
   - EF Core   :  DbContext
   - Identity   : IdentityUser/IdentityRole  IdentityDbContext
   - custom exceptions (errors)   : Exception
-
 
 ## Interfaces
 
@@ -73,3 +111,48 @@ interface is very cold separation between all implementations. similar to Ruby m
 
 interfaces are used *a lot* with dependency injection:
 - `ProductRepository` with `IProductRepository`
+
+## Bit of history
+
+.NET Framework - 2002
+- Windows only
+
+.NET Core - 2016
+- Windows, MacOS, Linux
+- They tried a `project.json`
+- `.csproj` became readable
+
+## Generics
+
+where one can find these generics:
+
+- lists: `List<T>` `LinkedList<>` `Dictionary<>` `IEnumerable<T>` `ICollection<T>` `IList<T>`
+- testing:  `new Mock<T>()`
+- nullability:  `int?`  `Nullable<int>`
+- dependency injection in ASP.NET Core
+  ```cs
+  builder.Services.AddSingleton<IProductRepository, ProductInMemoryRepository>();
+  ```
+- delegates `Func<T, bool>` `Predicate<T>` `Action<T>`
+- Blazor `EventCallback<T>`
+- FluentValidation
+  ```cs
+  class ProductValidator : AbstractValidator<ProductEntity>
+  {
+
+  }
+  ```
+
+
+
+```cs
+public Calculator
+{
+	public T Add<T>(T x, T y)
+	{
+
+	}
+}
+new Calculator<float>
+new Calculator<decimal>
+```
