@@ -189,11 +189,13 @@ EF Core is part of ADO.NET - ~~ActiveX~~ Data Objects .NET. It aims to not have 
 - 2009 Entity Framework - very much like LINQ to SQL, but with support for n:m and multi-database
 - 2016 .NET Core with Entity Framework Core <== currently the default for most projects
 
-NuGet packages - assembly .dll
+NuGet packages you'll need:
 - Microsoft.EntityFrameworkCore
-  - abstractions   DbContext DbSet<>
-- database provider for EF Core -  Microsoft.EntityFrameworkCore.SqlServer
-  - Sqlite
+  - contains abstractions `DbContext` `DbSet<>`
+- the package with the database provider for EF Core
+  - SQL Server: Microsoft.EntityFrameworkCore.SqlServer
+  - Sqlite: Microsoft.EntityFrameworkCore.Sqlite
+- Microsoft.EntityFrameworkCore.Tools/Design for managing migrations
 
 [Connectionstrings.com](https://www.connectionstrings.com/sqlite/) has handy examples for lots of connectionstrings to all kinds of databases.
 
@@ -228,3 +230,15 @@ await context.Products.ToArrayAsync();
 ```
 
 Biggest downside? You'll have to define your method as `async` and all calling methods will have to be made `async` as well. It's often easiest to do this right from the start.
+
+## ASP.NET Core
+
+Usable for many applications:
+
+- Web APIs - REST API  GET POST PUT PATCH DELETE  HTTP-requests
+- SignalR - realtime apps - chat multiplayer game  food ordering app
+- gRPC - server-to-server communication - highly useful when send loads of data to other servers (>10MB)
+- traditional web pages (MPA) - Razor Pages/Blazor
+- SPA - Blazor
+
+It boots up a web server: Kestrel
