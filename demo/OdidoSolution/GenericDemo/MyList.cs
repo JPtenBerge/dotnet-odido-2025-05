@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GenericDemo
 {
                                 // generic constraints
-    class MyList<TKey, TValue> where TKey : IComparable, ICloneable
+    class MyList<TKey, TValue>
     {
         public void Set(TKey key, TValue value)
         {

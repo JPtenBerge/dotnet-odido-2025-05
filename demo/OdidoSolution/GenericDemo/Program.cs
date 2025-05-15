@@ -1,6 +1,10 @@
-﻿using System.Collections;
+﻿using System.Runtime.CompilerServices;
+using System.Collections;
+using Entities = Shared.Entities;
+using Bla = Shared.Blabla;
 
-namespace GenericDemo;
+
+namespace GenericDemo.Utilities.Images.Png;
 
 internal class Program
 {
@@ -51,11 +55,27 @@ internal class Program
         }
 
 
+
         var myList = new MyList<int, short>();
 
         var myList2 = new MyList<string, short>();
 
-        //var myList3 = new MyList<Program, short>();
+        var myList3 = new MyList<Program, short>();
         //myList.Set();
+         
+
+
+
+        var products = new List<Entities.Product>();
+        var products2 = new List<Bla.Product>();
+
+        //products.Add(new Product
+        //{
+
+        //});
+
+
+
+
     }
 }

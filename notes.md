@@ -31,3 +31,45 @@ Value types in .NET:
 ## `is null` vs `== null`
 
 C# has a language feature called "operator overloading" that allows for custom behavior with operators. `== null` can be overloaded, `is null` cannot. For this reason, `is null` is regularly preferred over `== null`.
+
+## Inheritance
+
+- parent classes / child classes
+- slightly different behavior for children
+
+where to inherit:
+
+- domain classes/entities
+- technical stuff:
+  - web APIs    : Controller/ControllerBase
+  - filter:   ActionFilter
+  - custom validators   : AbstractValidator<>
+  - DTOs     : PaginationDto
+  - EF Core   :  DbContext
+  - Identity   : IdentityUser/IdentityRole  IdentityDbContext
+  - custom exceptions (errors)   : Exception
+
+
+## Interfaces
+
+- class with only abstract methods
+- only describe how classes can be talked to
+- contract
+  - server-server
+  - client-server
+  - server-external third-party server
+- polymorphism
+  - dependency injection 90%
+- always start with an I
+- abstract classes can still have an implementation
+
+examples: `IWhatever`  `ISomeService`  `IBillable`
+
+why interfaces vs parent class / abstract class? differences?
+- abstract class has an implementation
+- interface does not
+
+interface is very cold separation between all implementations. similar to Ruby mixins?
+
+interfaces are used *a lot* with dependency injection:
+- `ProductRepository` with `IProductRepository`
