@@ -9,6 +9,9 @@ namespace EntityFrameworkDemo
 
             //Console.WriteLine(Environment.CurrentDirectory);
 
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+
+            Console.WriteLine(typeof(Program).Assembly.Location);
 
             var options = new DbContextOptionsBuilder().UseSqlite(@"Data Source=C:\repos\course-instances\dotnet-odido-2025-05\demo\OdidoSolution\EntityFrameworkDemo\mydb.db").Options;
             var context = new ProductContext(options);
