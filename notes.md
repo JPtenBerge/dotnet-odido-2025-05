@@ -156,3 +156,75 @@ public Calculator
 new Calculator<float>
 new Calculator<decimal>
 ```
+
+## Entity Framework Core
+
+One of the common packages of Microsoft
+
+- Entity Framework: databases
+- Identity: authentication/authorization
+- System.Text.Json: JSON (de)serialization
+- ...
+
+EF Core is part of ADO.NET - ~~ActiveX~~ Data Objects .NET. It aims to not have code like this anymore:
+
+- 2002-2008
+  ```cs
+  var connection = new SqlConnection();
+  connection.Open();
+  var command = new SqlCommand(connection);
+  command.CommandType = CommandType.Text;
+  command.CommandText = "SELECT * FROM customer;"; // SQL injection
+  var reader = command.ExecuteReader();
+
+  while (reader.Next())
+  {
+    reader["name"]
+    int.Parse(reader["age"])
+    reader["id"]
+  }
+  ```
+- ~2005 Datasets/datatables
+- 2008 LINQ to SQL - n:m no support. Only SQL Server.
+- 2009 Entity Framework - very much like LINQ to SQL, but with support for n:m and multi-database
+- 2016 .NET Core with Entity Framework Core <== currently the default for most projects
+
+NuGet packages - assembly .dll
+- Microsoft.EntityFrameworkCore
+  - abstractions   DbContext DbSet<>
+- database provider for EF Core -  Microsoft.EntityFrameworkCore.SqlServer
+  - Sqlite
+
+[Connectionstrings.com](https://www.connectionstrings.com/sqlite/) has handy examples for lots of connectionstrings to all kinds of databases.
+
+### Alternatives
+
+- [Dapper](https://github.com/DapperLib/Dapper) - more lightweight, still have to query using strings, but it's fast, multi-database and more readable than doing everything by hand.
+- Hibernate  NHibernate
+
+### Cost of I/O and `async`/`await`
+
+[I/O operations are costly](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblog.mixu.net%2Ffiles%2F2011%2F01%2Fio-cost.png&f=1&nofb=1&ipt=0992119d26aba7e6d23fab38ef8ac8708e178b240c780de418dc01ecf82e6d6a) and shouldn't be synchronous operations as if you're creating an integer variable.
+
+```cs
+// PHP
+mysql_query($query);
+
+// Java
+em.persist(obj);
+
+// .NET
+command.ExecuteReader();
+context.SaveChanges();
+```
+
+Better:
+
+```cs
+await context.SaveChangesAsync();
+await context.Products.SingleAsync(p => p.Id == id);
+await context.Products.ToListAsync();
+await context.Products.ToArrayAsync();
+```
+
+Biggest downside? You'll have to define your method as `async` and all calling methods will have to be made `async` as well. It's often easiest to do this right from the start.
