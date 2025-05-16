@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo", "Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo", "WebDemo\WebDemo.csproj", "{405CBE5B-EED0-4EC0-82A9-FFF57E56B6CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDemo", "BlazorDemo\BlazorDemo.csproj", "{15CC0D19-FCB6-4C82-B585-07EA45EDB40C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDemo.Tests", "BlazorDemo.Tests\BlazorDemo.Tests.csproj", "{341A9839-52B5-44D1-B94B-542578005FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{405CBE5B-EED0-4EC0-82A9-FFF57E56B6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405CBE5B-EED0-4EC0-82A9-FFF57E56B6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405CBE5B-EED0-4EC0-82A9-FFF57E56B6CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CC0D19-FCB6-4C82-B585-07EA45EDB40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CC0D19-FCB6-4C82-B585-07EA45EDB40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CC0D19-FCB6-4C82-B585-07EA45EDB40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CC0D19-FCB6-4C82-B585-07EA45EDB40C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{341A9839-52B5-44D1-B94B-542578005FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341A9839-52B5-44D1-B94B-542578005FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341A9839-52B5-44D1-B94B-542578005FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341A9839-52B5-44D1-B94B-542578005FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
