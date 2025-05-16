@@ -1,6 +1,7 @@
 using EntityFrameworkDemo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebDemo.Endpoints;
 
 namespace WebDemo
 {
@@ -9,6 +10,8 @@ namespace WebDemo
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddControllers();
 
             // 3 ways to make your service known/injectable
 
@@ -45,8 +48,10 @@ namespace WebDemo
 
             // what needs to happen for every request/responses coming in/out
             app.UseHttpsRedirection();
-            
-             
+
+            app.MapControllers();
+
+            ProductEndpoints.MapProductEndpoints(app);
 
             app.MapGet("/", ([FromServices] IMagicService magicService) => 
                 $"Hello World! You are visitor #{magicService.GetMagicNumber()}");

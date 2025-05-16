@@ -10,4 +10,8 @@
     <ProjectReference Include="..\EntityFrameworkDemo\EntityFrameworkDemo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Bla\" />
+  </ItemGroup>
+
 </Project>
