@@ -1,4 +1,6 @@
+using EntityFrameworkDemo;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebDemo
 {
@@ -18,6 +20,12 @@ namespace WebDemo
             // - AddScoped() // per request: 0.5s, 2s, 3s, pretty short
             // - AddSingleton() // there is 1 instance of your service, never more. reading in config files.
             //   - shared across all requests, shared among all users
+
+
+            builder.Services.AddDbContext<ProductContext>(options =>
+            {
+                options.UseSqlite(@"Data Source=C:\repos\course-instances\dotnet-odido-2025-05\demo\OdidoSolution\EntityFrameworkDemo\mydb.db");
+            });
 
             builder.Services.AddScoped<IMagicService, MagicService>();
             //builder.Services.AddScoped<IMagicService, MagicianService>();
@@ -42,6 +50,9 @@ namespace WebDemo
 
             app.MapGet("/", ([FromServices] IMagicService magicService) => 
                 $"Hello World! You are visitor #{magicService.GetMagicNumber()}");
+
+            app.MapGet("/efcore", ([FromServices] ProductContext context) =>
+                $"There are {context.Products.Count()} products in the database");
 
             //app.MapPut("/qq", ([FromServices] IMagicService magicService) =>
             //    $"Hello World! You are visitor #{++counter} and the magic number is {magicService.GetMagicNumber()}");
