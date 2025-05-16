@@ -242,3 +242,175 @@ Usable for many applications:
 - SPA - Blazor
 
 It boots up a web server: Kestrel
+
+
+
+## Web API / REST API
+
+REpresentational State Transfer
+
+client (browser/script) => `/api/products`
+- it's representational thanks to the `Accept` header: `Accept: text/html, application/xml, application/json`
+
+focuses on DATA
+
+
+HTTP verbs:
+- GET  api/product  retrieve
+- POST  api/product  creating           /updating
+- DELETE  deleting
+- PUT                replacing          /creating
+- PATCH partial update
+
+```sh
+POST  api/product  { description: '...', price: 34 }
+POST  api/product  { description: '...', price: 34 }
+POST  api/product  { description: '...', price: 34 }
+POST  api/product  { description: '...', price: 34 }
+
+PUT  api/product/156   { id: 156, description: '...', price: 34 }
+PUT  api/product/156   { id: 156, description: '...', price: 34 }
+PUT  api/product/156   { id: 156, description: '...', price: 34 }
+PUT  api/product/156   { id: 156, description: '...', price: 34 }
+```
+
+Difference in results: idempotency
+
+HTTP status codes
+
+- 2xx - SUCCESS  good stuff
+  - 200 OK
+  - 201 CREATED
+  - 204 NO CONTENT   - often seen when you DELETE stuff
+- 3xx - redirects
+  - 301/302 - permanent/temporary
+- 4xx - client error
+  - 400 Bad Request
+    - syntax errors/validation errors
+  - 401 Unauthorized - are not supplying any credentials / credentials are wrong
+  - 403 Forbidden - authenticated, no access / no access at all
+  - 404 Not Found
+  - 405 Method Not Allowed    POST => endpoint that does not support POST
+  - 415 MediaType Not Supprted  XML => endpoint that cannot/will not parse XML
+  - 418 I'm a teapot
+  - 422 Unprocessable Entity - logical reasons
+- 5xx - server error
+  - 500 Internal Server Error - exceptions
+  - 502 Gateway Error
+
+ASP.NET Core has 2 ways of creating such REST APIs:
+- Controller-based
+  - 2008 ASP.NET MVC
+  - feature-complete
+  - default structure
+  - validation of incoming data `[Required]`
+- Minimal APIs
+  - 2021 .NET 6
+  - no default structure
+  - does not validate incoming data by default
+    - FluentValidation
+  - performance++
+  - automatic documentation / more typesafety with return values
+
+REST API - documentation
+- OpenAPI
+- Swagger
+
+## API testing tools
+
+- Postman
+- curl
+- Bruno
+- Hoppscotch
+- Insomnia
+- VS Code extension
+  - Thunder Client
+  - REST client - .http .rest
+
+## Talking to your Web API from your Blazor app
+
+.NET's default choice: `HttpClient`. Comes with a few caveats though:
+
+```cs
+var products = await Http.GetFromJsonAsync<IEnumerable<Product>>("api/product");
+
+// all good! but then:
+
+await Http.PostAsJsonAsync();
+//- no automatic JSON parsing for response
+//- doesn't allow for easily setting header
+
+await Http.PutAsJsonAsync()
+// - no automatic JSON parsing for response
+// - doesn't allow for easily setting header
+
+await Http.DeleteAsJsonAsync()
+// - doesn't allow for easily setting header
+
+// often, manual sending is required:
+await Http.SendAsync(new HttpRequestMessage() { });
+// it's not uncommon to write helper methods/a wrapper class to extend the capabilities of HttpClient
+```
+
+Alternative: [Flurl](https://flurl.dev/)
+
+```cs
+var person = await "https://api.com"
+    .AppendPathSegment("person")
+    .SetQueryParams(new { a = 1, b = 2 })
+    .WithOAuthBearerToken("my_oauth_token")
+    .PostJsonAsync(new
+    {
+        first_name = "Claire",
+        last_name = "Underwood"
+    })
+    .ReceiveJson<Person>();
+```
+
+## Blazor
+
+- webframework
+- SPA-webframework - Angular     Vue React Svelte Solid Qwik   "view library"
+  - SPA: Single Page Application
+    - high level of interaction with the user
+    - it's all about user-friendlyness
+- MPA-webframework - PHP Java Spring
+- Microsoft
+- 2020
+
+SPA with Blazor
+- WebAssembly   C# => compiles => WebAssembly
+  - Web API "WebAssembly"
+  - all your code runs in the browser
+    - your code is talking to .NET bits
+    - a microversion of .NET has to be shipped to the browser as well - Hello world-app is 7MB
+- Server
+  - all your code runs on the server
+  - every click on a button gets communicated to the server. server will then recalculate the UI state and communicate that state back to the browser. that state then gets rendered.
+  - on connection drop - your UI is completely unusable.
+
+## Unit testing
+
+Unit testing
+- smallest bits of code
+
+Integration testing
+- integrating something
+  - class A uses class B
+  - including database
+  - rendering HTML
+
+End-to-end testing
+- automating the browser
+- navigating to a deployed application
+- clicking/typing away in the UI
+
+Test frameworks:
+- MSTest - Microsoft  happy path
+- NUnit
+- xUnit
+
+Mock frameworks:
+- Moq
+- NSubstitute
+- FakeItEasy
